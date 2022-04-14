@@ -1,0 +1,28 @@
+<% if end_user_signed_in? %>
+<%= link_to 'Sign out', destroy_end_user_session_path, method: :delete %>
+<% end %>
+
+
+<h2>Questions</h2>
+<p class="text-right"><%= link_to 'New Article', new_question_path %></P>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Number</th>
+    <th>Title</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @questions.each do |question| %>
+    <tr>
+      <td><%= question.id %></td>
+      <td><%= question.title %></td>
+      <td><%= link_to 'Show', question_path(question), method: :get %></td>
+      <td><%= link_to 'Edit', edit_question_path(question) %></td>
+      <td><%= link_to 'Destroy', question_path(question), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
