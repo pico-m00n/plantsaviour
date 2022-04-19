@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_end_user!
-  
-  def index
+
+  def top
   end
 end

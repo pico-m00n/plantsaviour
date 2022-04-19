@@ -2,17 +2,22 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   def index
-    @questions = Question.all
+   # @questions = Question.all
+   #タグ絞り込み機能
+    @questions = params[:tag_id].present? ? Tag.find(params[:tag_id]).questions : Question.all
   end
 
   def show
+    @answer = Answer.new
   end
 
   def new
+    @tags = Tag.all
     @question = Question.new
   end
 
   def edit
+    @tags = Tag.all
   end
 
   # create のみ修正
@@ -55,8 +60,9 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
+ #Tag??
   def question_params
-    params.require(:question).permit(:end_user_id, :title, :body)
+    params.require(:question).permit(:end_user_id, :title, :body, :best_answer_id, {:tag_ids => []})
   end
 
 end

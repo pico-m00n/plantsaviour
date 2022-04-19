@@ -1,28 +1,52 @@
-<% if end_user_signed_in? %>
-<%= link_to 'Sign out', destroy_end_user_session_path, method: :delete %>
-<% end %>
+<div class="container">
 
 
-<h2>Questions</h2>
-<p class="text-right"><%= link_to 'New Article', new_question_path %></P>
-<table class="table">
-  <thead>
-  <tr>
-    <th>Number</th>
-    <th>Title</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+  <header class="jumbotron my-4">
+    <h1 class="display-3">Questions</h1>
+  </header>
 
-  <tbody>
-  <% @questions.each do |question| %>
-    <tr>
-      <td><%= question.id %></td>
-      <td><%= question.title %></td>
-      <td><%= link_to 'Show', question_path(question), method: :get %></td>
-      <td><%= link_to 'Edit', edit_question_path(question) %></td>
-      <td><%= link_to 'Destroy', question_path(question), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+  <div>現在回答募集中の質問一覧です</div>
+
+  <!--タグ検索フォーム!-->
+  <%= form_tag questions_path, method: :get, class: 'boards__searchForm' do %>
+      <%= select_tag :tag_id,
+                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                     {
+                       prompt: 'タグで絞り込み検索',
+                       onchange: 'submit(this.form);'
+                     }
+      %>
+   <% end %>
+   
+<p></p>
+  <!--キーワード検索フォーム!-->
+ <div class="search_form">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= f.text_field :word %>
+      <%= f.select :range, options_for_select([['質問'], ['投稿']]) %>
+      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backword_match"], ["部分一致","partial_match"]]) %>
+      <%= f.submit "検索", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="row text-center">
+    <% @questions.each do |question| %>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+          <div class="card-body">
+            <h4 class="card-title"><%= question.title %></h4>
+            <p class="card-text"><%= question.body %></p>
+            <% question.tags.each do |tag| %>
+               <button class="btn btn-info"><%= tag.name %></button>
+            <% end %>
+          </div>
+          <div class="card-footer">
+            <%= link_to '詳細をみる', question_path(question), method: :get %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

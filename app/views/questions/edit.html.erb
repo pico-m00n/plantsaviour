@@ -1,2 +1,20 @@
-<h1>Questions#edit</h1>
-<p>Find me in app/views/questions/edit.html.erb</p>
+<h1>質問編集</h1>
+<span>現在ログイン中のユーザー：<%= current_end_user.name %></span>
+<%= form_for(@question, url: question_path(@question)) do |f| %>
+    <div>
+        <%= f.label :タイトル %><br>
+        <%= f.text_field :title, autofocus: true, :placeholder =>"#{@question.title}" %>
+    </div>
+    <div>
+        <%= f.label :質問内容 %><br>
+        <%= f.text_area :body, :placeholder =>"#{@question.body}" %>
+    </div>
+     <div class="field">
+      <% @tags.each do |t| %>
+        <%= f.label t.name %>
+        <%= check_box_tag "question[tag_ids][]", t.id, @question.tags.include?(t) %>
+        <br/>
+      <% end %>
+     </div>
+    <div><%= f.submit "更新する" %></div>
+<% end %>
