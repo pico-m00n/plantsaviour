@@ -1,0 +1,13 @@
+ <% if question.bookmarked_by?(current_end_user) %>
+    <p>
+      <%= link_to question_bookmarks_path(question), method: :delete, remote: true do %>
+        <%= question.bookmarks.count %> 📚
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to question_bookmarks_path(question), method: :post, remote: true do %>
+        <%= question.bookmarks.count %>📖
+      <% end %>
+    </p>
+  <% end %>
