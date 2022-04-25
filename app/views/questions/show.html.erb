@@ -8,6 +8,12 @@
      <button class="btn btn-info"><%= tag.name %></button>
     <% end %>
 
+     <!--ぶっくまーく!-->
+    <td id="bookmark_buttons_<%= @question.id %>">
+      <%= render "bookmarks/bookmarks", question: @question %>
+    </td>
+   <!--!-->
+
     <% unless current_end_user.id == @question.end_user_id %>
       <%= link_to '回答する！', new_question_answer_path(@question.id), class: 'btn btn-primary btn-lg' %>
     <% end %>

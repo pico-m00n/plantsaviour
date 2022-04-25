@@ -273,6 +273,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   jbuilder (~> 2.7)
+  jquery-rails
   kaminari (~> 1.2.1)
   listen (~> 3.3)
   mysql2
