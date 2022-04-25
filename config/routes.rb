@@ -11,10 +11,10 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :end_users
   devise_scope :end_user do
     post 'end_users/guest_sign_in', to: 'end_users/sessions#guest_sign_in'
   end
+  devise_for :end_users
 
   get 'homes/top' => "home#top"
   get 'search' => 'searches#search'
