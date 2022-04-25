@@ -1,0 +1,14 @@
+<h1>プロフィール編集</h1>
+<span>現在ログイン中のユーザー：<%= current_end_user.name %></span>
+<%= form_with model:@end_user, url:end_user_path(@end_user), method: :patch, local:true do |f| %>
+    <div>
+        <%= f.label :ユーザーネーム %><br>
+        <%= f.text_field :name, autofocus: true, :placeholder =>"#{@end_user.name}" %>
+    </div>
+    <div>
+        <%= f.label :自己紹介 %><br>
+        <%= f.text_area :introduction, :placeholder =>"#{@end_user.introduction}" %>
+    </div>
+
+    <div><%= f.submit "更新する" %></div>
+<% end %>

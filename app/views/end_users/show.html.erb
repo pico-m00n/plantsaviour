@@ -1,0 +1,8 @@
+<h1>プロフィール</h1>
+<span>現在ログイン中のユーザー：<%= current_end_user.name %></span>
+    <div> ユーザーネーム：<%= @end_user.name %><br> </div>
+    <div>自己紹介: <%= @end_user.introduction %><br></div>
+
+<% if @end_user.name != "guestuser" %>
+    <div><%= link_to "修正する", edit_end_user_path(@end_user) %></div>
+<% end %>
