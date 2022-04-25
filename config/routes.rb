@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :end_users, only: [:show, :edit, :update]
-  resources :questions, shallow: true  d
+  resources :questions, shallow: true  do
     resource :bookmarks, only: [:create, :destroy]
     resources :answers, shallow: true,  only: [:new, :create] do
       resources :reactions, only: [:new, :create]
