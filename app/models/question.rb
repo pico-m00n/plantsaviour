@@ -4,7 +4,7 @@ class Question < ApplicationRecord
   has_many :tag_tags, dependent: :destroy
   has_many :tags, through: :tag_tags
   has_many :bookmarks, dependent: :destroy
-  
+
   def bookmarked_by?(end_user)
     bookmarks.where(end_user_id: end_user).exists?
   end

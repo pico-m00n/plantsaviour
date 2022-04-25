@@ -29,5 +29,4 @@ class EndUsersController < ApplicationController
       redirect_to end_user_path(current_end_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
-
 end
