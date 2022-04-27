@@ -1,8 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&display=swap');
 
 .end_user_color{
-    background-color: blue;
-    color: white;
+    color: blue;
 }
 
 .ba-parent {
@@ -18,3 +18,9 @@
   background-color: red;
   color: white;
 }
+
+
+body {
+  font-family: 'Shippori Mincho', serif;
+}
+

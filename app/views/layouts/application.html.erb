@@ -6,17 +6,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-   <%= render 'layouts/header' %>
+    <div class="row">
 
-   <main>
-    <p id="notice"><%= notice %></p>
-    <%= yield %>
-   </main>
+      <div class="col-1">
+       <%= render 'layouts/sidebar' %>
+      </div>
+
+      <div class="col-10">
+        <%= yield %>
+      </div>
+
+      <div class="col-0.1">
+        <a class="text-dark vertical" href="#">---------------------------TO TOP</a>
+        <image_tag ""
+      </div>
+
+    </div>
 
    <%= render 'layouts/footer' %>
   </body>
