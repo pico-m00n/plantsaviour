@@ -12,6 +12,8 @@
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
+
     <div class="row">
 
       <div class="col-1">
@@ -22,9 +24,8 @@
         <%= yield %>
       </div>
 
-      <div class="col-0.1">
-        <a class="text-dark vertical" href="#">---------------------------TO TOP</a>
-        <image_tag ""
+      <div class="col-1">
+        <%= render 'layouts/totop' %>
       </div>
 
     </div>

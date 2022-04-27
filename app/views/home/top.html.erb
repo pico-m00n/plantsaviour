@@ -3,9 +3,9 @@
     <div class="carousel-item active text-left">
       <%= image_tag "light.jpg", size: "700x700" %>
       <%= image_tag "mori.jpg", size: "300x300" %>
-      <div class="carousel-caption bg-mori">
-         <h1 class="text-dark">PlantSaviour</h1>
-         <p class="text-dark">あなたの植物、元気ですか</p>
+      <div class="carousel-caption">
+         <h1 class="text-light">PlantSaviour</h1>
+         <h3 class="text-light">Site for Plants&You</h3>
          <%= link_to 'ゲストログイン（閲覧用）', end_users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 col-lg-3 col-md-6 mx-auto", method: :post %>
          <%= link_to 'ログイン', new_end_user_session_path, class: "btn btn-secondary btn-sm btn-block mb-3 col-lg-3 col-md-6 mx-auto" %>
          <%= link_to '新規登録', new_end_user_registration_path, class: "btn btn-secondary btn-sm btn-block mb-3 col-lg-3 col-md-6 mx-auto" %>

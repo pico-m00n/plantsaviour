@@ -1,9 +1,9 @@
 <div class="container">
 
   <header class="jumbotron my-4 bg-mori">
-    <h1 class="display-3">Questions</h1>
-     <li>
-         <%= form_tag questions_path, method: :get, class: 'boards__searchForm' do %>
+    <h1 class="display-3 text-light">Questions</h1>
+     <div>
+         <%= form_tag questions_path, method: :get, class: 'boards__searchForm mb-2' do %>
             <%= select_tag :tag_id,
              options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
              {
@@ -12,18 +12,17 @@
              }
             %>
          <% end %>
-       </li>
+       </div>
 
-       <li>
          <div class="search_form">
           <%= form_with url: search_path, local: true, method: :get do |f| %>
             <%= f.text_field :word %>
             <%= f.select :range, options_for_select([['質問'], ['投稿']]) %>
             <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"], ["前方一致","forward_match"],  ["後方一致","backword_match"]]) %>
-            <%= f.submit "検索", class: "btn btn-primary" %>
+            <%= f.submit "検索", class: "btn btn-secondary" %>
           <% end %>
          </div>
-        </li>
+
   </header>
 
   <div class="row text-center">
@@ -35,7 +34,7 @@
             <h4 class="card-title"><%= question.title %></h4>
             <p class="card-text"><%= question.body %></p>
             <% question.tags.each do |tag| %>
-              <button class="btn btn-info btn-sm"><%= tag.name %></button>
+              <button class="btn btn-info btn-sm mb-1"><%= tag.name %></button>
             <% end %>
           </div>
           <div class="card-footer">
