@@ -6,11 +6,7 @@
     <% @post.tags.each do |tag| %>
      <button class="btn btn-info"><%= tag.name %></button>
     <% end %>
-  <!--ぶっくまーく!-->
-    <td id="bookmark_buttons_<%= @post.id %>">
-      <%= render "bookmarks/bookmarks", question: @post %>
-    </td>
-   <!--!-->
+
   </header>
 
   <div class="card-body">
