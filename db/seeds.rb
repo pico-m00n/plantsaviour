@@ -8,41 +8,70 @@
 
 EndUser.create(
     [
-        {name: '鈴木太郎', email: 'sitsumon1@gmail.com', password: '11111111', password_confirmation: '11111111'},
-        {name: '佐々木太郎', email: 'sitsumon2@gmail.com', password: '11111111', password_confirmation: '11111111'},
-        {name: '田中太郎', email: 'sitsumon3@gmail.com', password: '11111111', password_confirmation: '11111111'},
-        {name: '高橋花子', email: 'kaitou1@gmail.com', password: '11111111', password_confirmation: '11111111'},
-        {name: '斎藤花子', email: 'kaitou2@gmail.com', password: '11111111', password_confirmation: '11111111'},
-        {name: '池田花子', email: 'kaitou3@gmail.com', password: '11111111', password_confirmation: '11111111'}
+        {name: 'DMM太郎', email: 'sitsumon1@gmail.com', password: '11111111', password_confirmation: '11111111'},
+        {name: 'ジョルノ・ジョバーナ', email: 'sitsumon2@gmail.com', password: '11111111', password_confirmation: '11111111'},
+        {name: '松田龍平', email: 'sitsumon3@gmail.com', password: '11111111', password_confirmation: '11111111'},
+        {name: '高井光一', email: 'sitsumon4@gmail.com', password: '11111111', password_confirmation: '11111111'},
+        {name: '闇遊戯', email: 'sitsumon5@gmail.com', password: '11111111', password_confirmation: '11111111'},
     ])
 
 Question.create(
     [
-        {title: '東京のお土産で喜ばれるもの', body: '今週末東京に行きますが、東京土産で喜ばれるものありますか？', end_user_id: 1},
-        {title: '好きな動物', body: '一番好きな動物は何ですか？', end_user_id: 1},
-        {title: '美味しいご飯や', body: '名古屋周辺の美味しいご飯屋さん教えてください', end_user_id: 2}
+        {title: 'サボテンが折れちゃいました', body: 'サボテンを落としてしまい、真っ二つの状態です。助ける方法はありませんか？', end_user_id: 1},
+        {title: 'ハウスに蝗の大群が...', body: '稲を育てているハウスに蝗が繁殖しまくっています。何とか退治できませんか？', end_user_id: 1},
+        {title: 'あまい苺が作れません', body: '実がなるにはなるのですが、美味しくなりません。育て方にコツなどありますか？', end_user_id: 2},
+        {title: '葉が白く変色しています', body: 'オリーブを育てていて、葉が白く変色したんですが、これはなにかの病気ですか？', end_user_id: 2},
+        {title: '庭に変なキノコが生えてきました', body: '食べてもいいですか？', end_user_id: 2},
+        {title: '今年のトマトがとても小さくて', body: '一昨年からトマトを育てているのですが、今年のトマトはとても小さくて、考えられる原因はなんでしょうか？', end_user_id: 2},
+        {title: '初めての観葉植物は何がおすすめですか？', body: 'タイトルの通りです', end_user_id: 2},
+    ])
+
+TagTag.create(
+    [
+        {question_id: 1, tag_id: 5},
+        {question_id: 2, tag_id: 2},
+        {question_id: 3, tag_id: 1},
+        {question_id: 2, tag_id: 5},
+        {question_id: 2, tag_id: 6},
+        {question_id: 2, tag_id: 1},
+        {question_id: 2, tag_id: 6}
     ])
 
 Answer.create(
     [
-        {body: '東京ばな奈じゃないですか？', question_id: 1, end_user_id: 4},
-        {body: 'ラスクみたいなやつ', question_id: 1, end_user_id: 5},
-        {body: '中華まん', question_id: 1, end_user_id: 6}
+        {body: 'もう何をしても無駄です', question_id: 1, end_user_id: 2},
+        {body: '接着剤で断面の淵をくっつけて、しばらくすれば大抵回復します', question_id: 1, end_user_id: 3},
+    ])
+
+Post.create(
+    [
+        {title: '基本的な土壌の育て方', body: '', end_user_id: 2},
+        {title: 'サボテンの育て方', body: '', end_user_id: 2},
+        {title: '種子消毒の基本', body: '', end_user_id: 2},
+    ])
+
+PostTag.create(
+    [
+        {post_id: 1, tag_id: 3},
+        {post_id: 2, tag_id: 2},
+        {post_id: 3, tag_id: 1},
     ])
 
 Reaction.create(
     [
-        {body: '東京ばな奈いいですね', end_user_id: 1, answer_id: 1},
-        {body: '猫いいですね！', end_user_id: 1, answer_id: 4},
-        {body: '矢場とんいいですね！', end_user_id: 3, answer_id: 7}])
+        {body: 'そいつはどうかな', end_user_id: 5, answer_id: 1},
+        {body: '私のもその方法で治りました', end_user_id: 4, answer_id: 2},
+    ])
 
 Tag.create(
     [
         {name: '育成法'},
         {name: '病害虫'},
         {name: 'サボテン'},
-        {name: 'その他'}])
+        {name: '観葉植物'},
+        {name: '応急処置'},
+        {name: 'その他'}
+    ])
 
-# activeadmin(管理画面)に入るためのユーザーです。ターミナルで「rails g active_admin:install」を実行後
-# 作成されます。メールアドレスとパスワードはわかりやすく設定していますが、必要であれば変えてください。
+
 AdminUser.create!(email: 'admin@gmail.com', password: 'adminadmin', password_confirmation: 'adminadmin') if Rails.env.development?

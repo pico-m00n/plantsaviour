@@ -1,13 +1,9 @@
  <% if question.bookmarked_by?(current_end_user) %>
-    <p>
       <%= link_to question_bookmarks_path(question), method: :delete, remote: true do %>
-        <%= question.bookmarks.count %> 📚
+        <P><%= question.bookmarks.count %><%= image_tag "bookmark-check-fill.svg", size: "20x20" %></P>
       <% end %>
-    </p>
-    <% else %>
-    <p>
+  <% else %>
       <%= link_to question_bookmarks_path(question), method: :post, remote: true do %>
-        <%= question.bookmarks.count %>📖
+        <p><%= question.bookmarks.count %><%= image_tag "bookmark.svg", size: "20x20" %></p>
       <% end %>
-    </p>
   <% end %>
