@@ -74,4 +74,4 @@ Tag.create(
     ])
 
 
-AdminUser.create!(email: 'admin@gmail.com', password: 'adminadmin', password_confirmation: 'adminadmin') if Rails.env.development?
+AdminUser.create!(email: 'admin@gmail.com', password: 'adminadmin', password_confirmation: 'adminadmin')
