@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -7,6 +6,10 @@ Rails.application.routes.draw do
   devise_for :end_users
   devise_scope :end_user do
     post 'end_users/guest_sign_in', to: 'end_users/sessions#guest_sign_in'
+  end
+
+  resources :posts do
+    resource :bookmarks, only: [:create, :destroy]
   end
 
   resources :end_users, only: [:show, :edit, :update]

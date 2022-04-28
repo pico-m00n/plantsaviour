@@ -1,0 +1,28 @@
+<div class="container">
+
+
+  <header class="jumbotron my-4">
+    <h2 class="card-title"><%= @post.title %></h2>
+    <% @post.tags.each do |tag| %>
+     <button class="btn btn-info"><%= tag.name %></button>
+    <% end %>
+  <!--ぶっくまーく!-->
+    <td id="bookmark_buttons_<%= @post.id %>">
+      <%= render "bookmarks/bookmarks", question: @post %>
+    </td>
+   <!--!-->
+  </header>
+
+  <div class="card-body">
+    内容：<br><%= @post.body %><br>
+    質問ユーザー：<span class="<%= "end_user_color" if current_end_user.id == @post.end_user_id %>"><%= @post.end_user.name %></span>
+  </div>
+
+</div>
+
+ <div class="text-right">
+    <% if current_end_user.id == @post.end_user_id %>
+      <%= link_to '修正', edit_question_path(@post) %> |
+    <% end %>
+    <%= link_to '戻る', questions_path %>
+ </div>

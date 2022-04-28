@@ -5,6 +5,7 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :questions, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :reactions, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
@@ -14,6 +15,16 @@ class EndUser < ApplicationRecord
       end_user.password = SecureRandom.urlsafe_base64
       end_user.name = "guestuser"
     end
+  end
+
+  has_one_attached :profile_image
+
+  def get_profile_image(width, height)
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/hana.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    profile_image.variant(resize_to_limit: [100, 100]).processed
   end
 
 end

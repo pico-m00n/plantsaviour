@@ -1,12 +1,22 @@
 <h2>Results index</h2>
 
 <table class="table table-hover table-inverse">
-  <!--検索対象モデルがUserの時 -->
+  <!--検索対象モデルがQuestionの時 -->
   <% if @range == "質問" %>
     <tbody>
       <% @questions.each do |question| %>
         <tr>
           <td><%= question.title %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <!--検索対象モデルがQuestionではない時(= 検索対象モデルがPostの時) -->
+     <% else %>
+    <tbody>
+      <% @Posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.body %></td>
         </tr>
       <% end %>
     </tbody>

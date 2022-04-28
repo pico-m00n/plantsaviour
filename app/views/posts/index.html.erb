@@ -1,9 +1,9 @@
 <div class="container">
 
   <header class="jumbotron my-4 bg-mori">
-    <h1 class="display-3 text-light">Questions</h1>
+    <h1 class="display-3 text-light">Posts</h1>
      <div>
-         <%= form_tag questions_path, method: :get, class: 'boards__searchForm mb-2' do %>
+         <%= form_tag posts_path, method: :get, class: 'boards__searchForm mb-2' do %>
             <%= select_tag :tag_id,
              options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
              {
@@ -26,19 +26,19 @@
   </header>
 
   <div class="row text-center">
-    <% @questions.each do |question| %>
+    <% @posts.each do |post| %>
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
           <img class="card-img-top" src="http://placehold.it/500x325" alt="">
           <div class="card-body">
-            <h4 class="card-title"><%= question.title %></h4>
-            <p class="card-text"><%= question.body %></p>
-            <% question.tags.each do |tag| %>
+            <h4 class="card-title"><%= post.title %></h4>
+            <p class="card-text"><%= post.body %></p>
+            <% post.tags.each do |tag| %>
               <button class="btn btn-info btn-sm mb-1"><%= tag.name %></button>
             <% end %>
           </div>
           <div class="card-footer">
-            <%= link_to '詳細をみる', question_path(question), method: :get %>
+            <%= link_to '詳細をみる', post_path(post), method: :get %>
           </div>
         </div>
       </div>

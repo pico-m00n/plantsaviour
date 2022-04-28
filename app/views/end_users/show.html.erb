@@ -2,6 +2,7 @@
 <span>現在ログイン中のユーザー：<%= current_end_user.name %></span>
     <div> ユーザーネーム：<%= @end_user.name %><br> </div>
     <div>自己紹介: <%= @end_user.introduction %><br></div>
+    <%= image_tag @end_user.get_profile_image(100,100) %>
 
 <% if @end_user.name != "guestuser" %>
     <div><%= link_to "修正する", edit_end_user_path(@end_user) %></div>
