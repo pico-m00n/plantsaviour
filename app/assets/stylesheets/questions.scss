@@ -6,6 +6,12 @@
   background-size: cover;
 }
 
+.bg-hana {
+ background-image: image-url('hana.jpg');
+ background-size: cover;
+ background-position: center;
+}
+
 .vertical{
   writing-mode: vertical-rl;
 }
@@ -15,3 +21,9 @@
   top: 0px;
 }
 
+.home {
+    background-image: image-url('light.jpg');
+    background-position: 50% 75%;
+    background-size: cover;
+    height: 100vh; /* 全画面表示 */
+}
