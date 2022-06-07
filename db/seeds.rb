@@ -8,11 +8,11 @@
 
 EndUser.create(
     [
-        {name: 'DMM太郎', email: 'sitsumon1@gmail.com', password: '11111111', password_confirmation: '11111111'},
-        {name: 'ジョルノ・ジョバーナ', email: 'sitsumon2@gmail.com', password: '11111111', password_confirmation: '11111111'},
-        {name: '松田龍平', email: 'sitsumon3@gmail.com', password: '11111111', password_confirmation: '11111111'},
-        {name: '高井光一', email: 'sitsumon4@gmail.com', password: '11111111', password_confirmation: '11111111'},
-        {name: '闇遊戯', email: 'sitsumon5@gmail.com', password: '11111111', password_confirmation: '11111111'},
+        {name: '太郎', email: '1@mail', password: '111111', password_confirmation: '111111'},
+        {name: 'ジョルノ・ジョバーナ', email: '2@mail', password: '222222', password_confirmation: '222222'},
+        {name: '松田龍平', email: '3@mail', password: '333333', password_confirmation: '333333'},
+        {name: '高井光一', email: '4@mail', password: '444444', password_confirmation: '444444'},
+        {name: '闇遊戯', email: '5@mail', password: '555555', password_confirmation: '555555'},
     ])
 
 Question.create(

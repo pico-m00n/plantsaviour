@@ -1,9 +1,17 @@
 <h1>プロフィール</h1>
-<span>現在ログイン中のユーザー：<%= current_end_user.name %></span>
-    <div> ユーザーネーム：<%= @end_user.name %><br> </div>
-    <div>自己紹介: <%= @end_user.introduction %><br></div>
-    <%= image_tag @end_user.get_profile_image(100,100) %>
-
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+        <%= image_tag @end_user.get_profile_image(200,200) %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= @end_user.name %></h5>
+        <p class="card-text"><%= @end_user.introduction %></p>
+      </div>
+    </div>
+  </div>
+</div>
 <% if @end_user.name != "guestuser" %>
-    <div><%= link_to "修正する", edit_end_user_path(@end_user) %></div>
+    <p><%= link_to "プロフィール編集", edit_end_user_path(@end_user) %></p>
 <% end %>
